@@ -21,27 +21,25 @@ describe Warmup do
   end  
 
   describe '#calls_some_methods' do
-    # let(:fake_string_double) do 
-    #     double("String",  upcase: "CAPITALS" )
-    # end
-
+    # turn into let 
+    string = "asds"
     it 'passed in string responds to upcase call' do
-      
-      # allow().to 
-      #string_double = double(:upcase => "HELLO")
-      #expect(!!warmup.calls_some_methods('hello')).to eq(true)
-      string = "asds"
-      allow(warmup.calls_some_methods(string)).to receive(:upcase!)
-      expect(warmup.calls_some_methods(string)).to eq("ASDS")
-
+    
+      allow(string).to receive(:upcase!).and_return("ASDS")
+      expect(string).to receive(:upcase!)#.and_return("hello")
+      #expect(string).to eq("hello")
+      warmup.calls_some_methods(string)
+    
     end
 
-    it 'returns' do
-      
+    it 'passed in string responds to reverse method call' do
+      allow(string).to receive(:reverse!).and_return("hello")
+      expect(string).to receive(:reverse!)#.and_return("hello")
+      warmup.calls_some_methods(string)  
     end
 
-    it 'returns' do
-      
+    it 'returns an object different than the one passed in' do
+      expect(warmup.calls_some_methods("Hello")).to eq("I am unrelated")
     end
   end
 
