@@ -20,7 +20,30 @@ describe Warmup do
     end
   end  
 
-  
+  describe '#calls_some_methods' do
+    # let(:fake_string_double) do 
+    #     double("String",  upcase: "CAPITALS" )
+    # end
+
+    it 'passed in string responds to upcase call' do
+      
+      # allow().to 
+      #string_double = double(:upcase => "HELLO")
+      #expect(!!warmup.calls_some_methods('hello')).to eq(true)
+      string = "asds"
+      allow(warmup.calls_some_methods(string)).to receive(:upcase!)
+      expect(warmup.calls_some_methods(string)).to eq("ASDS")
+
+    end
+
+    it 'returns' do
+      
+    end
+
+    it 'returns' do
+      
+    end
+  end
 
 end
 
